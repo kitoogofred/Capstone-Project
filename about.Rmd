@@ -1,0 +1,23 @@
+---
+title: "Next Word Prediction Shinny App"
+author: "Fredrick Kitoogo"
+date: "31 December 2017"
+output: html_document
+---
+The Model is built based on the following:
+
+# 1. Data
+The data is from three different text sources, i.e. blogs, news, and twitter feeds and are given in four (4) different languages: German, English (US), Finnish, and Russian. For this project, we shall use the the English (US) data sets.
+
+- We sample 2% of the number lines in each data set, then combine them into one data set that shall be used in building the corpus.
+
+- Generate training, development and testing dataset
+
+# 2. n-Grams and Frequencies
+We identify all combinations of adjacent words (ngrams) in the corpus. We limit ourselves to one, two and three words (unigrams, bigrams and trigrams). We also compute the word frequencies to be used in the model
+
+# 3. katz stupid backoff model
+The Model uses the n-Grams and their frequencies.
+When trying to find the probability of a word
+appearing in a sentence it will first look for 
+context for the word at the n-gram level and if there is no n-gram of that size it will recurse to the (n-1)-gram and multiply its score with 0.4. The recursion stops at unigrams.
